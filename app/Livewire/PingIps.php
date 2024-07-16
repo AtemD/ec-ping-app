@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use Illuminate\Support\Facades\Process;
 use App\Models\Ping;
+use Illuminate\Http\Response;
 
 class PingIps extends Component
 {
@@ -78,9 +79,8 @@ class PingIps extends Component
                 // 3. PING: transmit failed. General failure.
                 // 4. General failure.
                 // 5. Reply from 192.168.1.1: Destination net unreachable.
-                // 6. Reply from 192.168.1.1: Destination net unreachable.
-                // 7. Reply from 196.202.165.161: bytes=32 time=627ms TTL=46
-                if(strpos($this->output, "bytes") !== false) {
+                // 6. Reply from 196.202.165.161: bytes=32 time=627ms TTL=46
+                if(strpos($this->output, "bytes=") !== false) {
                     // logger('Reply count: ' . $this->successfulRepliesCount);
                     $this->successfulRepliesCount++;
                 }
@@ -102,6 +102,9 @@ class PingIps extends Component
 
     public function render()
     {
-        return view('livewire.ping-ips');
+        return view('livewire.ping-ips')->response(function(Response $response) {
+            $response->header('Cache-Control', 'no-cache');
+        });
+        // ->header('Cache-Control', 'no-cache');
     }
 }

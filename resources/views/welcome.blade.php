@@ -10,8 +10,10 @@
 </head>
 <body>
 
+  <div>
     <livewire:ping-ips>
-
+  </div>
+  
     @livewireScripts
 
     <script>
