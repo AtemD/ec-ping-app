@@ -7,7 +7,7 @@
 
     <title>EC Ping App</title>
     <!-- Favicons -->
-    <link href="{{ asset('images/logo-ec-southsudan.jpeg') }}" rel="icon">
+    <link href="{{ asset('images/sample-ping-logo.png') }}" rel="icon">
 
     @vite('resources/css/app.css')
     @livewireStyles

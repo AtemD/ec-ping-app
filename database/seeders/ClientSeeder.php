@@ -49,59 +49,7 @@ class ClientSeeder extends Seeder
             'is_online' => true, 
         ]);
 
-        Site::factory()->create([
-            'client_id'=> $clientCare->id,
-            'name' => 'Mankien Care', 
-            'ip_address' => '81.199.20.193', 
-            'is_online' => true,  
-        ]);
-
-        Site::factory()->create([
-            'client_id'=> $clientCare->id,
-            'name' => 'Abien Care', 
-            'ip_address' => '81.199.20.209', 
-            'is_online' => true,  
-        ]);
-
-        Site::factory()->create([
-            'client_id'=> $clientCare->id,
-            'name' => 'Wau Care', 
-            'ip_address' => '81.199.20.217', 
-            'is_online' => true,  
-        ]);
-
-        Site::factory()->create([
-            'client_id'=> $clientCare->id,
-            'name' => 'Torit Care', 
-            'ip_address' => '81.199.201.29', 
-            'is_online' => true,  
-        ]);
-
-        Site::factory()->create([
-            'client_id'=> $clientCare->id,
-            'name' => 'Ikwotos', 
-            'ip_address' => '81.199.201.29', 
-            'is_online' => true,  
-        ]);
-
-        Site::factory()->create([
-            'client_id'=> $clientCare->id,
-            'name' => 'Panyagor Care', 
-            'ip_address' => '81.199.20.177', 
-            'is_online' => true,  
-        ]);
-
-        Site::factory()->create([
-            'client_id'=> $clientCare->id,
-            'name' => 'Bor Care', 
-            'ip_address' => '81.199.20.129', 
-            'is_online' => true,  
-        ]);
-            
-        
-        // CEDSS 
-        //     CEDSS Rumbek: ping 196.202.166.57 -t
-        //     CEDSS Awiel: ping 154.56.98.65 -t
+       
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
