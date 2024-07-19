@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  {{-- <div class="card rounded bg-base-100 w-96 shadow-xl border-solid border-1 my-1 mx-1">
+    {{-- <div class="card rounded bg-base-100 w-96 shadow-xl border-solid border-1 my-1 mx-1">
     <div class="card-body p-0">
         <div class="flex justify-between">
             <h2 class="card-title">
@@ -34,38 +34,46 @@
         </ul>
     </div>
 </div> --}}
-{{-- <div class="badge badge-error badge-sm"></div>
+    {{-- <div class="badge badge-error badge-sm"></div>
 <div class="badge badge-success badge-sm"></div> --}}
-{{-- <button id="clickButton" wire:click="pingIp" class="btn btn-sm btn-outline">Ping</button> --}}
+    {{-- <button id="clickButton" wire:click="pingIp" class="btn btn-sm btn-outline">Ping</button> --}}
 
-    @foreach ($clients as $client)
-        @foreach ($client->sites as $site)
-          <livewire:client-site wire:key="{{ $site->id }}" :site="$site">
+    {{-- <div class="alert alert-warning m-4" wire:offline>
+        Whoops, your device has lost connection. The web page you are viewing is offline.
+    </div> --}}
+
+
+
+    <livewire:offline-status>
+
+        @foreach ($clients as $client)
+            @foreach ($client->sites as $site)
+                <livewire:client-site wire:key="{{ $site->id }}" :site="$site">
+            @endforeach
         @endforeach
-    @endforeach
 
-    @livewireScripts
+        @livewireScripts
 
-    <script>
-        // function autoRefresh() {
-        //     window.location = window.location.href;
-        // }
-        // setInterval('autoRefresh()', 6000);
+        <script>
+            // function autoRefresh() {
+            //     window.location = window.location.href;
+            // }
+            // setInterval('autoRefresh()', 6000);
 
-        // window.onload = function(){
-        // function clickToPing() {
-        //   window.location = window.location.href;
+            // window.onload = function(){
+            // function clickToPing() {
+            //   window.location = window.location.href;
 
-        //   window.onload = function () {
-        //     document.getElementById('clickButton').click();
-        //   }
+            //   window.onload = function () {
+            //     document.getElementById('clickButton').click();
+            //   }
 
-        // }
+            // }
 
-        // }
+            // }
 
-        // setInterval('clickToPing()', 5000);
-    </script>
+            // setInterval('clickToPing()', 5000);
+        </script>
 </body>
 
 </html>
