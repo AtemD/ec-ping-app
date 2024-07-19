@@ -8,36 +8,28 @@ use App\Models\Ping;
 use App\Models\Site;
 use App\Models\Client;
 
-class PingIps extends Component
+class ClientSite extends Component
 {
-    public $ipAddress = '196.202.165.161';
-
+    
+    public $ipAddress;
     public string $output = '';
-
     private $process;
-
     // Variable related with checking successful uptime
     public $maxLoopIterations = 5;
     public $loopCounter = 0;
     public $successfulRepliesCount = 0;
     public $isPingSuccessful = false; 
-
     public Site $site;
-    public Client $client;
 
 
-    public function mount(Site $site, Client $client)
+    public function mount(Site $site)
     {
         $this->site = $site;
-        $this->client = $client;
         $this->ipAddress = $site->ip_address;
     }
 
-    public function pingIps()
+    public function pingIp()
     {
-
-        $this->site = Ping::first();
-
         $this->process = Process::forever()->start("ping -t {$this->ipAddress}");
         
         while ($this->process->running()) {
@@ -77,15 +69,7 @@ class PingIps extends Component
                 $this->reset(['loopCounter', 'successfulRepliesCount']);
             } else {
 
-                // check the output string, for a "Reply" in: "Reply from 196.202.165.161: bytes=32 time=627ms TTL=46"
-                // other output strings include: 
-                // 1. Reply from 192.168.1.24: Destination host unreachable.
-                // 2. Request timed out.
-                // 3. PING: transmit failed. General failure.
-                // 4. General failure.
-                // 5. Reply from 192.168.1.1: Destination net unreachable.
-                // 6. Reply from 192.168.1.1: Destination net unreachable.
-                // 7. Reply from 196.202.165.161: bytes=32 time=627ms TTL=46
+                // check the output string, for a "bytes=" in: "Reply from 196.202.165.161: bytes=32 time=627ms TTL=46"
                 if(strpos($this->output, "bytes=") !== false) {
                     $this->successfulRepliesCount++;
                 }
@@ -101,12 +85,12 @@ class PingIps extends Component
             );
 
             // usleep(350000);
-            sleep(1);
+            sleep(3);
         }
     }
 
     public function render()
     {
-        return view('livewire.ping-ips');
+        return view('livewire.client-site');
     }
 }
