@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clients', function (Blueprint $table) {
-            $table->tinyIncrements('id');
+        Schema::create('queues', function (Blueprint $table) {
+            $table->smallIncrements('id');
             $table->string('name');
-            $table->string('queue');
+            // $table->integer('item_count');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clients');
+        Schema::dropIfExists('queues');
     }
 };

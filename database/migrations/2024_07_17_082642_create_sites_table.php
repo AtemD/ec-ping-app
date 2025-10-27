@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('ip_address');
             $table->boolean('is_online');
+            $table->json('ping_output')->nullable();
             $table->timestamps();
 
             // id: 

@@ -24,6 +24,11 @@ class SiteFactory extends Factory
             },
             'ip_address' => fake()->ipv4(),
             'is_online' => fake()->boolean(),
+            'ping_output' => [
+                "status" =>"failed",
+                "ip" => "196.202.164.9",
+                "raw" => "Request timed out."
+                ]
         ];
     }
 }

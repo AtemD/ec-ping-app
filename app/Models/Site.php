@@ -17,6 +17,10 @@ class Site extends Model
         "is_online",
     ];
 
+    protected $casts = [
+        'ping_output' => 'array',
+    ];
+
     public function client()
     {
         return $this->belongsTo(Client::class);
